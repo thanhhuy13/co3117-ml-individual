@@ -4,7 +4,7 @@
 
 | Item | Value |
 |---|---|
-| Student | _Họ tên – MSSV_ |
+| Student | _Trần Thanh Huy – 2352414_ |
 | Dataset | UCI Human Activity Recognition Using Smartphones (2012), downloaded 2026-09-24 |
 | Use case | Predict a person's current physical activity from smartphone inertial measurements |
 | Primary metric | Macro-F1 (secondary: accuracy, confusion matrix) |
@@ -24,9 +24,6 @@
 python -m venv .venv
 pip install -r requirements.txt
 ```
-
-## Run
-_TODO: commands to reproduce experiments._
 
 ## Tags
 `release-baseline`, `w05` … `w15` (`w08-midterm`), `part1-final`, `part2-final`.
