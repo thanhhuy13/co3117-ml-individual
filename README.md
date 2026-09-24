@@ -5,11 +5,11 @@
 | Item | Value |
 |---|---|
 | Student | _Họ tên – MSSV_ |
-| Dataset | UCI Human Activity Recognition Using Smartphones (_version_) |
+| Dataset | UCI Human Activity Recognition Using Smartphones (2012), downloaded 2026-09-24 |
 | Use case | Predict a person's current physical activity from smartphone inertial measurements |
 | Primary metric | Macro-F1 (secondary: accuracy, confusion matrix) |
 | Split policy | _subject-aware split – see [data/README.md](data/README.md)_ |
-| Random seeds | _e.g. 42_ |
+| Random seeds | 42 |
 
 ## Navigation
 - [PROGRESS.md](PROGRESS.md) – weekly dashboard
