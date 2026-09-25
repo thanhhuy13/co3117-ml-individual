@@ -28,3 +28,13 @@
 - **Checked against:** I ran the script: 7352 train / 2947 test windows, 561 features, and no overlapping subjects. I also read the dataset's `README.txt`.
 - **What changed:** I froze the validation subjects as `[3, 16, 22, 23]`.
 - **Can I redo it without AI:** yes.
+
+## W05 - 2026-09-25
+### 1. Diagnostic questions and Q1 explanation
+- **Question:** Which exercises should I use for the release diagnostic?
+- **Before AI:** the handwritten diagnostic was done closed-book.
+- **Tool / purpose:** Claude, used to write the self-made questions (no answers). After the attempt, asked it to explain questions.
+- **What I got:** a list of exercises and question prompts; after the attempt, an explanation of the answer of each question.
+- **Checked against:** Mitchell (1997), Section 3.4.1.
+- **What changed:** I understood that entropy is always computed on the class labels, and the attribute is only used to split. And my knowledge about foundations is enhanced.
+- **Can I redo it without AI:** yes.
