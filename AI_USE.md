@@ -38,3 +38,13 @@
 - **Checked against:** Mitchell (1997), Section 3.4.1.
 - **What changed:** I understood that entropy is always computed on the class labels, and the attribute is only used to split. And my knowledge about foundations is enhanced.
 - **Can I redo it without AI:** yes.
+
+## W05 - 2026-09-27
+### 1. Entropy and information gain testcase
+- **Question:** Which usecase should I use to test entropy and gain info function?
+- **Before AI:** I coded entropy and information_gain myself and committed.
+- **Tool / purpose:** Claude, used to learn the NumPy, point out bugs in my code, and write the test file..
+- **What I got:** syntax explanations; bug hints (log6p → np.log2(p), weight must be |S_v|/|S| instead of per-label counts); recommends usecase that i used.
+- **Checked against:** my hand calculation of Mitchell Ex. 3.2 (entropy = 1, gain(a2) = 0, gain(a1) ≈ 0.0817); `scipy.stats.entropy` and `sklearn.metrics.mutual_info_score` on UCI HAR (the tests pass); Mitchell (1997), Section 3.4.1.
+- **What changed:** fixed my entropy (use np.log2(p)). In information_gain, I changed the weight from `count_y_v / count_y` to `len(y_v) / len(y)`, because the weight is the group size over the total, not a per-label ratio. I also learned that v is a value of the attribute, not a label, and that continuous HAR features need a threshold (x < c) first.
+- **Can I redo it without AI:** yes.
