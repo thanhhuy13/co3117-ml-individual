@@ -22,5 +22,5 @@ print(classification_report(y_val, pred))
 
 print(f"Macro-F1 = {f1:.4f}")
 print(f"Accuracy = {accuracy:.4f}")
-print("Confusion matrix \n", confusion_matrix)
+print("Confusion matrix \nx", confusion_matrix)
 
