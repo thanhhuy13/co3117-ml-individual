@@ -48,3 +48,41 @@
 - **Checked against:** my hand calculation of Mitchell Ex. 3.2 (entropy = 1, gain(a2) = 0, gain(a1) ≈ 0.0817); `scipy.stats.entropy` and `sklearn.metrics.mutual_info_score` on UCI HAR (the tests pass); Mitchell (1997), Section 3.4.1.
 - **What changed:** fixed my entropy (use np.log2(p)). In information_gain, I changed the weight from `count_y_v / count_y` to `len(y_v) / len(y)`, because the weight is the group size over the total, not a per-label ratio. I also learned that v is a value of the attribute, not a label, and that continuous HAR features need a threshold (x < c) first.
 - **Can I redo it without AI:** yes.
+
+## W05 - 2026-09-28
+### 1. What to read for overfitting and pruning
+- **Question:** Which parts of Mitchell and Müller do I need for the decision tree curve and the pruning comparison?
+- **Before AI:** my handwritten diagnostic (`d31049a`) showed gaps in overfitting, pruning and continuous attributes.
+- **Tool / purpose:** Claude, asked for a reading list; after reading, asked it to summarise Mitchell Ch. 3 (§3.2–§3.7.2) into revision notes for my exam notebook (kept outside the repo).
+- **What I got:** section and page numbers in both books, and a short summary of Ch. 3.
+- **Checked against:** I read Mitchell (1997) §3.2–§3.7.2 myself, and Müller & Guido (2017) pp. 26–29 and 70–77.
+- **What changed:** I understood the formal definition of overfitting, pre- vs post-pruning, reduced-error pruning, and how thresholds are chosen for continuous attributes.
+- **Can I redo it without AI:** yes.
+
+### 2. Decision tree validation curve (`dt_validation_curve_max_depth.py`)
+- **Question:** How do I find where the tree starts to overfit on my data?
+- **Before AI:** I wrote and ran a single tree with max_depth=3 myself (`d0dcacb`).
+- **Tool / purpose:** Claude, asked what a validation curve is and how the Python syntax works (for loop, list append, zip, matplotlib), explained with unrelated examples. I wrote the code myself.
+- **What I got:** the idea of the curve and syntax examples; after I ran it, bug hints: my print loop printed the last depth 20 times, the figure name ended with `.png.png`, and the axis labels should say max_depth and Macro-F1.
+- **Checked against:** Mitchell (1997) Fig. 3.6 and Müller & Guido (2017) p. 29.
+- **What changed:** fixed the bugs (`7c6357b`). I learned that my plot uses max_depth and Macro-F1 instead of the number of nodes and accuracy like Fig. 3.6, and why the curve is flat after depth 19.
+- **Can I redo it without AI:** yes.
+
+## W05 - 2026-09-28/29
+
+### 1. Catch-up post
+- **Question:** What should go into each section of the catch-up?
+- **Before AI:** my results, my diagnostic corrections file.
+- **Tool / purpose:** Claude, used to explain what each section needs and based on it i wrote catch-up myself.
+- **What I got:** A recommendation topic from AI.
+- **What changed:** I depended on the recommendation and wrote catch-up.
+- **Can I redo it without AI:** Yes; I can explain every section.
+
+### 2.Progress dashboard
+- **Question:**What links does PROGRESS.md need?
+- **Before AI:** my experiment outputs.
+- **Tool / purpose:** Claude, used to fill in the links in PROGRESS.md.
+- **What I got:* the W01–W04 links in PROGRESS.md.
+- **Checked against:** I clicked every link.
+- **What changed:** dashboard (`7c08f35`).
+- **Can I redo it without AI:** yes.
