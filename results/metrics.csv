@@ -1,2 +1,6 @@
 week,model,depth,representation,split,macro_f1,accuracy,train_time_s,infer_time_s,commit
-R0,logistic regression,C,561 features ,val,0.9322,0.9279,,,
+R0,logistic regression,C,561 features ,val,0.9322,0.9279,,,dece186
+R0,decision tree full,C,561 features ,val,0.8136,,,,3c10fb3
+R0,decision tree max_depth=4,C,561 features,val,0.8702,,,,3c10fb3
+R0,decision tree min_samples_leaf=20,C,561 features,val,0.8476,,,,3c10fb3
+R0,decision tree ccp_alpha=0.005,C,561 features,val,0.8832,,,,3c10fb3
