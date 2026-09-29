@@ -1,12 +1,12 @@
 import numpy as np
 from sklearn.linear_model import Perceptron
 from sklearn.metrics import f1_score, accuracy_score
-from src.datasets import load_har, SEED
+from src.data import load_har, SEED
 from src.from_scratch.perceptron import perceptron_fit, perceptron_predict
 
 train, val, _ = load_har()
-x_train, y_train = train
-x_val, y_val = val
+x_train, y_train, _ = train
+x_val, y_val, _ = val
 
 W = []
 for k in range(1, 7):
