@@ -86,3 +86,25 @@
 - **Checked against:** I clicked every link.
 - **What changed:** dashboard (`7c08f35`).
 - **Can I redo it without AI:** yes.
+
+## W05 - 2026-09-29 (Perceptron)
+
+### 1. Drill question set
+- **Question:** Which questions should the W05 drill cover?
+- **Before AI:** nothing.
+- **Tool / purpose:** Claude, used to build the question set (no answers): three self-made questions. Explained the answer of each questions after i did correction based on Mitchell, Machine Learning (1997) by myself.
+- **What I got:** the question list.
+- **Checked against:** the spec's W05 drill topics.
+- **What changed:** I did the drill closed-book and then wrote corrections from the book. Claude only help me explain and recheck the answer .
+- **Can I redo it without AI:** yes.
+
+### 2 Perceptron tests and experiment
+- **Question:** How do I test perceptron, and compare it with sklearn on HAR?
+- **Before AI:** I wrote `perceptron_predict` and `perceptron_fit` from the book (`6093eb1`) and the one-vs-rest code myself.
+- **Tool / purpose:** Claude, used for the recommendation where test code and experiment code should live, sklearn's default settings, and bug.
+- **What I got:** bug: my first experiment loaded the official test set (moved to `load_har()` and val before committing), wrong module name and unpacking in the experiment (`73f7fe8`), the syntax example pasted into `perceptron_fit`, and `epochs`/`shuffle` passed in the wrong positions. Also guiding questions on why shuffle and epochs matter.
+- **Checked against:** my unit tests (AND learned 4/4, XOR < 1), sklearn `Perceptron` on the same split, Mitchell §4.4.2.
+- **What changed:** added a shuffle option (`e2ede4d`) and the epochs/shuffle comparison (`5a2ea17`).
+- **Other AI used:** None
+- **Can I redo it without AI:** yes.
+

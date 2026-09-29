@@ -1,16 +1,16 @@
 # MODEL_LOG
 
-<!-- Copy the block below once per model. -->
 
-## Model: _name_
-- **Syllabus chapter / depth (A/B/C):**
-- **Objective / factorization / decision rule:**
-- **Assumptions, inductive bias, expected failure modes:**
-- **Representation & preprocessing:**
-- **Own pre-reference commit:**
-- **Reference code/notebook consulted:**
-- **Hyperparameters & selection procedure:**
-- **Metrics (Macro-F1, accuracy), runtime, model size:**
-- **Diagnostic plot/table & focused experiment:**
-- **Error / limitation analysis, use-case fit:**
-- **Exam-ready paragraph (no code):**
+## Model: Perceptron (one-vs-rest)
+- **Syllabus chapter / depth (A/B/C):** Ch. 3 Perceptron / MLP / backpropagation. Depth A (own NumPy code); sklearn `Perceptron` as depth C benchmark.
+- **Objective / factorization / decision rule:** o = sgn(w·x) with x₀ = 1 for the bias. Training rule wᵢ ← wᵢ + η(t − o)xᵢ, applied after each example. For 6 classes: one perceptron per class (class k = +1, rest = −1), predict the class with the highest w·x.
+- **Assumptions, inductive bias, expected failure modes:** Linear decision boundary (hyperplane w·x = 0). Converges only if the data are linearly separable; otherwise w keeps changing and the result depends on when training stops and on the data order. Cannot represent XOR-like classes.
+- **Representation & preprocessing:** 561 UCI HAR features, no scaling. Frozen split from `load_har()` (val subjects 3, 16, 22, 23; test not used).
+- **Own pre-reference commit:** drill `1e7ad1d`, perceptron `6093eb1`, one-vs-rest experiment `1c7c8aa`.
+- **Reference code/notebook consulted:** Mitchell (1997) §4.4; Müller & Guido (2017) pp. 63–66 (one-vs-rest); scikit-learn `Perceptron` documentation (default settings).
+- **Hyperparameters & selection procedure:** η = 0.01, epochs ∈ {10, 30}, shuffle ∈ {no, yes}, seed 42. Compared on the validation set only, one factor at a time (`5a2ea17`).
+- **Metrics (Macro-F1, accuracy), runtime, model size:** val Macro-F1 / accuracy: 10 epochs 0.8426 / 0.8443; 30 epochs 0.9359 / 0.9321; 10 epochs + shuffle 0.9325 / 0.9286; 30 epochs + shuffle 0.9424 / 0.9386; sklearn 0.9258 / 0.9200. Model size: 6 × 562 = 3,372 weights. Runtime not measured.
+- **Diagnostic plot/table & focused experiment:** epochs/shuffle table in [W05 post](docs/weekly/W05_perceptron_delta.md) section D; unit tests on the drill example, AND and XOR in `tests/test_perceptron.py`.
+- **Error / limitation analysis, use-case fit:** Without shuffling, the sorted training file (by person and time) pulls w toward the last block of data. The best setup beats sklearn by only 0.017 on 4 validation subjects, with one seed and a setup chosen on val, so it is not a reliable win. Close to logistic regression (0.9322) because both are linear classifiers.
+- **Exam-ready paragraph (no code):** 
+    - A perceptron multiplies each input by its weight, adds them together with a bias w₀ (using an extra input x₀ = 1), and outputs +1 if the sum w·x is greater than 0 and −1 otherwise. Geometrically, it splits the input space with a straight line (a hyperplane in higher dimensions) defined by w·x = 0, and the weight vector w is perpendicular to this line and points toward the +1 side. It learns by going through the training examples one at a time and changing the weights only when it makes a mistake, using wᵢ ← wᵢ + η(t − o)xᵢ, which moves w toward x when the target is +1 and away from x when the target is −1. If the training data is linearly separable and the learning rate is small enough, it is guaranteed to find a line that classifies every example correctly after a finite number of updates. It fails when no straight line can separate the classes, as in XOR, where the positive points (0,1) and (1,0) lie on one diagonal and the negative points on the other; the fix is a two-layer network, for example combining A∧¬B and ¬A∧B with an OR unit. For more than two classes, we train one perceptron per class (that class against all the others) and predict the class whose perceptron gives the highest score w·x. Unlike the perceptron rule, the delta rule uses the output before the threshold (w·x) and minimizes the squared error with gradient descent, so it converges toward the best-fit weights even when the data is not linearly separable.
