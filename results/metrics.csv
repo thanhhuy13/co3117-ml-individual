@@ -4,3 +4,8 @@ R0,decision tree full,C,561 features ,val,0.8136,,,,3c10fb3
 R0,decision tree max_depth=4,C,561 features,val,0.8702,,,,3c10fb3
 R0,decision tree min_samples_leaf=20,C,561 features,val,0.8476,,,,3c10fb3
 R0,decision tree ccp_alpha=0.005,C,561 features,val,0.8832,,,,3c10fb3
+W05,perceptron OvR scratch 10 epochs,A,561 features,val,0.8426,0.8443,,,5a2ea17
+W05,perceptron OvR scratch 30 epochs,A,561 features,val,0.9359,0.9321,,,5a2ea17
+W05,perceptron OvR scratch 10 epochs shuffle,A,561 features,val,0.9325,0.9286,,,5a2ea17
+W05,perceptron OvR scratch 30 epochs shuffle,A,561 features,val,0.9424,0.9386,,,5a2ea27
+W05,perceptron sklearn,C,561 features,val,0.9258,0.9200,,,5a2ea27
